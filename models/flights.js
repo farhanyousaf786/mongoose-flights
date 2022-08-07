@@ -6,21 +6,24 @@ var oneYearFromNow = new Date();
 const flightSchema = new mongoose.Schema({
 
     airline: {
-        type: [String],
+        type: String,
         enum: ['American', 'Delta', 'Southwest', 'United']
     },
 
     airport: {
-        type: [String],
+        type: String,
         defualt: 'DEN',
-        enum: ['ATL', 'DFW', 'DEN', 'LAX', 'SAN']
+        enum: ['ATL', 'DFW', 'DEN', 'LAX', 'SAN'],
     },
 
     flightNo: Number,
-    
-    departs: { type: Date, defualt: oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() + 1) },
+
+    departs: {
+    type: Date,
+    defualt: oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() + 1),
+   },
 
 });
 
 
-mod = mongoose.model('Flight', flightSchema);
+module.exports = mongoose.model('Flight', flightSchema);

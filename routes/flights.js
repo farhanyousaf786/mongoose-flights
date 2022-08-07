@@ -6,4 +6,8 @@ const flightController = require('../controllers/flights');
 router.get('/new', flightController.new);
 
 
+
+router.post('/', flightController.create);
+
+
 module.exports = router;
