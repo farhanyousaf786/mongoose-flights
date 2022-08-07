@@ -11,9 +11,7 @@ function newFlight(req, res) {
 }
 
 
-
 function index(req, res) {
-
     Flight.find({}, function (err, allOfTheFlightsInTheDatabase) {
         console.log(allOfTheFlightsInTheDatabase, "<<-- All the flights");
         if (err) {
@@ -24,6 +22,7 @@ function index(req, res) {
         });
     });
 }
+
 
 function create(req, res) {
     console.log(req.body, "< -- this is we enter in form")
