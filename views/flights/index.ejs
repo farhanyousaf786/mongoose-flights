@@ -15,9 +15,9 @@
         <thead>
             <tr>
                 <th>--Airline--</th>
-                <th>--Airport--</th>
                 <th>--Flight No--</th>
-                <th>--Departs--</th>
+                <th>--Details--</th>
+
             </tr>
         </thead>
         <tbody>
@@ -29,16 +29,14 @@
                         <%=f.airline %>
 
                     </td>
-                    <td>
-                        <%=f.airport %>
-
-                    </td>
+                   
                     <td>
                         <%=f.flightNo %>
 
                     </td>
+                    
                     <td>
-                        <%=f.departs %>
+                        <a href="/flights/<%=f._id%>">Details</a>
 
                     </td>
                 </tr>
