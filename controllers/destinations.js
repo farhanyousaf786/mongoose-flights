@@ -1,3 +1,5 @@
+const Flight = require('../models/flights');
+
 
 module.exports = {
     create,
@@ -10,8 +12,15 @@ function create(req, res) {
 
     console.log(req.body, "<------ the content of the form aka destinations");
 
-    // res.redirect('/flights/62f029c578576692d3636ccf')
+    Flight.findById(req.params.id, function (err, flightDcument) {
 
-    res.redirect('/flights/${req.params.id}')
+        console.log(flightDcument, "<------ the flight document");
+        flightDcument.destinations.push(req.body);
+        flightDcument.save(function (err) {
+
+            res.redirect(`/flights/${req.params.id}`);
+        })
+    })
 
 }
+

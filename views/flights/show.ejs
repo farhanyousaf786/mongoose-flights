@@ -71,6 +71,33 @@
     </form>
 
 
+
+
+    
+    <br>
+    <% if (flight.destinations.length) { %>
+        <table>
+          <thead>
+            <tr>
+              <th>Air port</th>
+              <th>Arrival</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% flight.destinations.forEach(function(r) { %>
+              <tr>
+                <td><%= r.airport %></td>
+                <td><%= r.arrival %></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <h5>No Arrival Yet</h5>
+      <% } %>
+
+      </br>
+
 </body>
 
 </html>
