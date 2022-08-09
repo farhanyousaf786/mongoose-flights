@@ -47,10 +47,13 @@
         </tbody>
     </table>
 
+    <br><br>
+    <a href="/tickets/new">ADD Ticket</a>
 
     <br><br>
     <h2>Destinations</h2>
     <form id="add-review-form" method="POST" action="/flights/<%= flight._id %>/destinations">
+     
         <br> <label>Airport
             <select name="airport">
                 <option value="ATL">ATL</option>
@@ -73,30 +76,34 @@
 
 
 
-    
+
     <br>
     <% if (flight.destinations.length) { %>
         <table>
-          <thead>
-            <tr>
-              <th>Air port</th>
-              <th>Arrival</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% flight.destinations.forEach(function(r) { %>
-              <tr>
-                <td><%= r.airport %></td>
-                <td><%= r.arrival %></td>
-              </tr>
-            <% }); %>
-          </tbody>
+            <thead>
+                <tr>
+                    <th>Air port</th>
+                    <th>Arrival</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% flight.destinations.forEach(function(r) { %>
+                    <tr>
+                        <td>
+                            <%= r.airport %>
+                        </td>
+                        <td>
+                            <%= r.arrival %>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </tbody>
         </table>
-      <% } else { %>
-        <h5>No Arrival Yet</h5>
-      <% } %>
+        <% } else { %>
+            <h5>No Arrival Yet</h5>
+            <% } %>
 
-      </br>
+                </br>
 
 </body>
 
