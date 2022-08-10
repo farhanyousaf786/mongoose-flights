@@ -1,16 +1,55 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <a href="/flights/new">Add New Flight</a>
-    <br>
-    <a href="/flights">All Flights</a>
-  </br>
 
-  </body>
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <style>
+    body {
+      background-color: lightblue;
+      text-align: center;
+
+    }
+
+    #options {
+
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+    .buttons {
+      background-color: white;
+      border: 2px solid black;
+      color: green;
+      padding: 5px 10px;
+      text-align: center;
+      display: inline-block;
+      font-size: 20px;
+      margin: 10px 30px;
+      cursor: pointer;
+    }
+  </style>
+
+<body>
+  <h1>
+    <%= title %>
+  </h1>
+  <p>Welcome to Airline</p>
+
+  <p id="options">
+
+    <br>
+    <a class="buttons" href="/flights" style="text-decoration:none">1. Check All Flights</a>
+    </br>
+
+    <br>
+    <a class="buttons" href="/flights/new" style="text-decoration:none">2. Add New Flight</a></br>
+
+  </p>
+
+
+
+</body>
+
 </html>

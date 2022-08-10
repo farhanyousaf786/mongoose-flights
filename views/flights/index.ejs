@@ -7,39 +7,57 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <title>All Flights</title>
+
+
+    <style>
+        body {
+
+            text-align: center;
+            background-color: lightblue;
+
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
 </head>
 
 <body>
     <h1>Flight List</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>--Airline--</th>
-                <th>--Flight No--</th>
-                <th>--Details--</th>
 
-            </tr>
-        </thead>
+    <table class="mainTable" style="width:100%">
+
+        <tr>
+            <th>Airline</th>
+            <th>Flight No</th>
+            <th>Details</th>
+        </tr>
+
         <tbody>
             <!-- Write the line of EJS to iterate over movies using forEach -->
 
             <% flights.forEach(f=> { %>
+                <br>
                 <tr>
                     <td>
                         <%=f.airline %>
 
                     </td>
-                   
+
                     <td>
                         <%=f.flightNo %>
 
                     </td>
-                    
+
                     <td>
-                        <a href="/flights/<%=f._id%>">Details</a>
+                        <a style="color:blue;" id="details" href="/flights/<%=f._id%>">Detail</a>
 
                     </td>
                 </tr>
+
                 <% }) %>
                     <!-- Close the forEach using EJS here -->
         </tbody>

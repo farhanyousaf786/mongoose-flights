@@ -8,17 +8,79 @@
     <title>
         <%= title %>
     </title>
+    <style>
+        body {
+
+            background-color: lightblue;
+            align-items: center;
+
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        .buttons {
+            background-color: white;
+            border: 1px solid black;
+            color: green;
+            padding: 1px 1px;
+            text-align: center;
+            display: inline-block;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        #head {
+            display: table;
+            width: 100%;
+        }
+
+        .head1 {
+            display: table-cell;
+            color: red;
+
+        }
+    </style>
 </head>
 
 <body>
 
+    <br></br>
+
+    <div id="head">
+        <div class="head1">
+            <h3>Add Ticket</h3>
+            <a class="buttons" href="/tickets/new" style="text-decoration:none">Add</a></br>
+
+        </div>
+        <div class="head1">
+            <h3>Add Flight</h3>
+
+            <form id="add-per-to-ticket" action="/flights/<%flight._id %>/tickets" method="POST">
+                <select name="ticketId">
+                    <%- tickets.map(p=>
+                        `<option value="${p._id}">${p.seat}</option>`
+                        ).join('') %>
+                </select>
+                <button type="submit">Add to Flight</button>
+            </form>
+        </div>
+    </div>
+
+    <br></br>
+
+    <h2>Flight Details</h2>
+
     <table>
         <thead>
             <tr>
-                <th>--Airline--</th>
-                <th>--Airport--</th>
-                <th>--Flight No--</th>
-                <th>--Departs--</th>
+                <th>Airline</th>
+                <th>Airport</th>
+                <th>Flight No</th>
+                <th>Departs</th>
 
             </tr>
         </thead>
@@ -26,19 +88,19 @@
 
             <tr>
                 <td>
-                    ----<%=flight.airline %>---
+                    <%=flight.airline %>
 
                 </td>
                 <td>
-                    ----<%=flight.airport %>---
+                    <%=flight.airport %>
 
                 </td>
                 <td>
-                    ------<%=flight.flightNo %>----
+                    <%=flight.flightNo %>
 
                 </td>
                 <td>
-                    ----<%=flight.departs %>---
+                    <%=flight.departs %>
 
                 </td>
 
@@ -47,14 +109,12 @@
         </tbody>
     </table>
 
-    <br><br>
-    <a href="/tickets/new">ADD Ticket</a>
+
 
     <br><br>
-    <h2>Destinations</h2>
+    <h2>ADD Destinations</h2>
     <form id="add-review-form" method="POST" action="/flights/<%= flight._id %>/destinations">
-     
-        <br> <label>Airport
+         <label>Airport
             <select name="airport">
                 <option value="ATL">ATL</option>
                 <option value="DFW">DFW</option>
@@ -63,19 +123,20 @@
                 <option value="SAN">SAN</option>
             </select>
         </label>
-        </br>
+        
         </select>
 
-        <br>
+        
         <label>Arrival:
             <input type="datetime-local" name="arrival">
-        </label></br>
+        </label>
         <input type="submit" value="Add Review">
     </form>
 
- 
 
-    <br>
+    <br></br>
+    <h2>Destination</h2>
+
     <% if (flight.destinations.length) { %>
         <table>
             <thead>
@@ -101,20 +162,8 @@
             <h5>No Arrival Yet</h5>
             <% } %>
 
-                </br>
+                
 
-                <h3>Add Ticket</h3>
-<br>
-
-<form id="add-per-to-ticket" action="/flights/<%flight._id %>/tickets" method="POST">
-    <select name="ticketId">
-      <%- tickets.map(p => 
-        `<option value="${p._id}">${p.seat}</option>`
-      ).join('') %>
-    </select>
-    <button type="submit">Add to Flight</button>
-  </form>
-</br>
 
 </body>
 
