@@ -73,9 +73,7 @@
         <input type="submit" value="Add Review">
     </form>
 
-
-
-
+ 
 
     <br>
     <% if (flight.destinations.length) { %>
@@ -104,6 +102,19 @@
             <% } %>
 
                 </br>
+
+                <h3>Add Ticket</h3>
+<br>
+
+<form id="add-per-to-ticket" action="/flights/<%flight._id %>/tickets" method="POST">
+    <select name="ticketId">
+      <%- tickets.map(p => 
+        `<option value="${p._id}">${p.seat}</option>`
+      ).join('') %>
+    </select>
+    <button type="submit">Add to Flight</button>
+  </form>
+</br>
 
 </body>
 

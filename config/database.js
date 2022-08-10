@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 // movies is the name of the db, it will either connect to a movies database in mongodb
 // or it will create a movies database in mongodb
-mongoose.connect('mongodb://localhost/flights');
+mongoose.connect('mongodb://localhost/flightss');
 
 
 // this will fire when mongoose (our express app)

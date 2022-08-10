@@ -32,6 +32,10 @@ const flightSchema = new mongoose.Schema({
         defualt: oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() + 1),
     },
     destinations: [destinationSchema],
+
+    ticket: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tickets' }]
+
+
 });
 
 

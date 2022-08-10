@@ -1,4 +1,5 @@
 const Flight = require('../models/flights');
+const Ticket = require('../models/tickets');
 
 module.exports = {
     new: newFlight,
@@ -13,12 +14,21 @@ function newFlight(req, res) {
 
 
 function show(req, res,) {
-    
+
     Flight.findById(req.params.id, function (err, flight) {
-       
-       console.log(flight, "<------ after adde the destination >>>>>>>");
-        res.render('flights/show', {
-            title: "Flight Detail", flight
+
+        console.log(flight, "<------ after adde the destination >>>>>>>");
+
+        Ticket.find({_id: {$nin: flight.seat}}, function (err, tickets) {
+
+            console.log(tickets, "<------ after add ticket <><><");
+
+             res.render('flights/show', {
+            title: "Flight Detail", 
+            flight: flight,
+            tickets: tickets,
+
+        });
         });
     });
 }
@@ -44,6 +54,7 @@ function create(req, res) {
             return res.render('flights/new.ejs');
         }
         console.log(flightDocCreateInDB, "< -- this fligh in DB bro");
-        res.send("Response from create function for movie");
+
+        res.redirect(`/flights/${flightDocCreateInDB._id}`);
     })
 }
